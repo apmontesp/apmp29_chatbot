@@ -16,7 +16,14 @@ GROQ_API_KEY   = os.getenv("GROQ_API_KEY")
 TURSO_URL      = os.getenv("TURSO_URL")
 TURSO_TOKEN    = os.getenv("TURSO_TOKEN")
 
-cliente_groq = Groq(api_key=GROQ_API_KEY)
+# Debug temporal
+print(f"TOKEN: {TELEGRAM_TOKEN[:10] if TELEGRAM_TOKEN else 'NONE'}")
+print(f"GROQ: {GROQ_API_KEY[:10] if GROQ_API_KEY else 'NONE'}")
+print(f"TURSO_URL: {TURSO_URL or 'NONE'}")
+print(f"TURSO_TOKEN: {TURSO_TOKEN[:10] if TURSO_TOKEN else 'NONE'}")
+
+groq_key = os.getenv("GROQ_API_KEY", "").strip()
+cliente_groq = Groq(api_key=groq_key)
 
 # ── Base de datos ──────────────────────────────────
 async def inicializar_db():
